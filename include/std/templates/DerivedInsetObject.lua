@@ -30,5 +30,13 @@ function ClassName.new() : ClassName
 	return self
 end
 
+function ClassName:OnStart() : ()
+	-- This function runs right after the script is done compiled by the sub-compiler.
+end
+
+function ClassName:OnRenderStepped(dt : number) : ()
+	-- This function runs on every frame update.
+end
+
 
 return ClassName
