@@ -30,5 +30,13 @@ function TestScript.new() : TestScript
 	return self
 end
 
+function TestScript:OnStart() : ()
+	-- This function runs right after the script is done compiled by the sub-compiler.
+end
+
+function TestScript:OnRenderStepped(dt : number) : ()
+	-- This function runs on every frame update.
+end
+
 
 return TestScript
