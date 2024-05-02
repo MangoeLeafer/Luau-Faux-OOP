@@ -11,7 +11,8 @@ export type InsetObject = typeof(
 )
 
 export type Members = Object.Members & {
-	
+	referenceTag : string;
+	referencedInstance : Instance;
 }
 
 export type Class =  Object.Class & {
