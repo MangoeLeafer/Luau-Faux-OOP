@@ -17,6 +17,11 @@ export type Members = Object.Members & {
 export type Class =  Object.Class & {
 	__index : Class;
 	new : () -> InsetObject;
+
+	onStart : (self : InsetObject) -> ();
+	onRenderStepped : (self : InsetObject, deltaTime : number) -> ();
+	onStepped : (self : InsetObject, time : number, deltaTime : number) -> ();
+	onHearbeat : (self : InsetObject, deltaTime : number) -> ();
 }
 
 local InsetObject : Class = {} :: Class
