@@ -1,4 +1,3 @@
-
 --!strict
 
 local BaseClass = require("BaseClass Directory")
@@ -6,28 +5,37 @@ local BaseClass = require("BaseClass Directory")
 
 export type ClassName = typeof(
 	setmetatable(
-		{} :: Members,
-		{} :: Class
+		{} :: DerivedMembers,
+		{} :: DerivedClass
 	)
 )
 
-export type Members = BaseClass.Members & {
-	
+export type Members = {
+	referenceTag : string;
+	referencedInstance : Instance;
 }
 
-export type Class =  BaseClass.Class & {
-	__index : Class;
+export type Class = {
+	__index : DerivedClass;
 	new : () -> ClassName;
 }
 
-local ClassName : Class = {} :: Class
+type DerivedMembers = BaseClass.Members & Members
+
+type DerivedClass = typeof(
+    setmetatable(
+        {} :: Class,
+        {} :: BaseClass.Class
+    )
+)
+
+local ClassName : DerivedClass = setmetatable({} :: Class, BaseClass)
 ClassName.__index = ClassName
-setmetatable(ClassName, BaseClass)
 
 
 function ClassName.new() : ClassName
-	local self : ClassName = setmetatable(BaseClass.new() :: Members, ClassName)
-	
+	local self : ClassName = setmetatable(BaseClass.new() :: any, ClassName)
+
 	return self
 end
 
