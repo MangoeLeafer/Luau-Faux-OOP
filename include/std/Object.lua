@@ -8,15 +8,13 @@ export type Object = typeof(
 )
 
 export type Members = {
-	name : string;
+	
 }
 
 export type Class =  {
 	__index : Class;
 	new : () -> Object;
-
-	ToString : (self : Object) -> string;
-	GetClassName : (self : Object) -> string;
+    super : () -> Members;
 }
 
 local Object : Class = {} :: Class
@@ -24,17 +22,13 @@ Object.__index = Object
 
 
 function Object.new() : Object
-	local self : Object = setmetatable({} :: Members, Object)
-	
+	local self : Object = setmetatable(Object.super(), Object)
+
 	return self
 end
 
-function Object:ToString() : string
-	return self
-end
-
-function Object:GetClassName() : string
-	return self.name
+function Object.super() : Members
+    return {} :: Members
 end
 
 
