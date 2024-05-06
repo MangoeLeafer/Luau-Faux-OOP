@@ -1,21 +1,23 @@
 --!strict
 
+export type Class = {__index : Class; __newindex : Class;} & Constructor
 export type Object = typeof(
 	setmetatable(
 		{} :: Members,
 		{} :: Class
 	)
 )
+type Constructor = {new : (...any) -> Object}
+type Summary = {
+	-- Static Properties:
 
-export type Members = {
-	
+	-- Non-Static Properties:
+
+	-- Static Methods:
+
+	-- Non-Static Methods:
 }
 
-export type Class =  {
-	__index : Class;
-	new : (...any) -> Object;
-    super : (...any) -> Members;
-}
 
 local Object : Class = {} :: Class
 Object.__index = Object
@@ -25,10 +27,6 @@ function Object.new(...: any) : Object
 	local self : Object = setmetatable(Object.super(), Object)
 
 	return self
-end
-
-function Object.super(...: any) : Members
-    return {} :: Members
 end
 
 
