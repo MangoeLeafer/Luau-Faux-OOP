@@ -1,33 +1,44 @@
 --!strict
 
-export type Class = {__index : Class; __newindex : Class;} & Constructor
-export type Object = typeof(
-	setmetatable(
-		{} :: Members,
-		{} :: Class
-	)
-)
-type Constructor = {new : (...any) -> Object}
-type Summary = {
-	-- Static Properties:
+--#region [Type Definitions]
+export type Object = typeof(setmetatable({} :: Members, {} :: Interface))
+type Members = {
 
-	-- Non-Static Properties:
-
-	-- Static Methods:
-
-	-- Non-Static Methods:
 }
+type Static = {
+
+}
+type Interface = {
+    -- [Constructor]
+    new : () -> Object;
+    __index : Interface;
+
+    -- [Non-Static Methods]
 
 
-local Object : Class = {} :: Class
+    -- [Static Methods]
+
+}
+--#endregion
+
+
+-- [Implementing Interface]
+local Static : Static = {} :: Static
+local Object : Interface = {} :: Interface
 Object.__index = Object
 
 
-function Object.new(...: any) : Object
-	local self : Object = setmetatable(Object.super(), Object)
-
-	return self
+-- [Constructor]
+function Object.new()
+    local self : Object = setmetatable({} :: Members, Object)
+    return self
 end
+
+--[Non-Static Methods]
+
+
+--[Static Methods]
+
 
 
 return Object
