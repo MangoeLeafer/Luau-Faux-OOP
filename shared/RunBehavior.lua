@@ -26,14 +26,14 @@ type Interface = {
 
 -- [Implementing Interface]
 local Static : Static = {} :: Static
-local LinkBehavior : Interface = {} :: Interface
-LinkBehavior.__index = LinkBehavior
-setmetatable(LinkBehavior, Object)
+local RunBehavior : Interface = {} :: Interface
+RunBehavior.__index = RunBehavior
+setmetatable(RunBehavior, Object)
 
 
 -- [Constructor]
-function LinkBehavior.new()
-    local self : Object = setmetatable(Object.new() :: any, LinkBehavior)
+function RunBehavior.new()
+    local self : Object = setmetatable(Object.new() :: any, RunBehavior)
     return self
 end
 
@@ -44,4 +44,4 @@ end
 
 
 
-return LinkBehavior
+return RunBehavior
