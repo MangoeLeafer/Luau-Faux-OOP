@@ -1,6 +1,6 @@
 --!strict
 
-local Object = require(script.Parent:WaitForChild("Object"))
+local Linkable = require(script.Parent:WaitForChild("Linkable"))
 
 --#region [Type Definitions]
 export type Object = Object.Object & typeof(setmetatable({} :: Members, {} :: Interface))
