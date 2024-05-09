@@ -26,14 +26,14 @@ type Interface = {
 
 -- [Implementing Interface]
 local Static : Static = {} :: Static
-local BindBehavior : Interface = {} :: Interface
-BindBehavior.__index = BindBehavior
-setmetatable(BindBehavior, Object)
+local Linkable : Interface = {} :: Interface
+Linkable.__index = Linkable
+setmetatable(Linkable, Object)
 
 
 -- [Constructor]
-function BindBehavior.new()
-    local self : Object = setmetatable(Object.new() :: any, BindBehavior)
+function Linkable.new()
+    local self : Object = setmetatable(Object.new() :: any, Linkable)
     return self
 end
 
@@ -44,4 +44,4 @@ end
 
 
 
-return BindBehavior
+return Linkable
