@@ -7,9 +7,6 @@ export type Object = Object.Object & typeof(setmetatable({} :: Members, {} :: In
 type Members = {
 
 }
-type Static = {
-
-}
 type Interface = {
     -- [Constructor]
     new : () -> Object;
@@ -25,7 +22,6 @@ type Interface = {
 
 
 -- [Implementing Interface]
-local Static : Static = {} :: Static
 local Linkable : Interface = {} :: Interface
 Linkable.__index = Linkable
 setmetatable(Linkable, Object)
